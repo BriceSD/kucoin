@@ -16,7 +16,7 @@ export class Transaction {
     }
 
     static from(pair: Pair, side: Side, time: number, size: number): Transaction {
-        if (time === undefined || time < 0 || size === undefined || size < 0) {
+        if (time === undefined || time < 0 || size === undefined || size <= 0) {
             throw new TransactionCreationError("Arguments are not valid");
         }
         return new Transaction(pair, side, time, size);

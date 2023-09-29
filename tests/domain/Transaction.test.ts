@@ -2,10 +2,15 @@ import { Pair } from "../../src/domain/Pair";
 import { Side, Transaction, TransactionCreationError } from "../../src/domain/Transaction";
 import { generatePair } from "../utils";
 
-describe("When building a transaction with invalid arguments", function() {
+describe("When building a transaction with negative time/size or size of 0", function() {
     let pair = generatePair("aaaa", "bbbb");
 
-    let rawTransactions: [Pair, Side, number, number][] = [[pair, Side.Buyer, -1, -1], [pair, Side.Seller, -1, 88], [pair, Side.Seller, 89, -1]];
+    let rawTransactions: [Pair, Side, number, number][] = [
+        [pair, Side.Buyer, -1, -1],
+        [pair, Side.Seller, -1, 88],
+        [pair, Side.Seller, 89, -1],
+        [pair, Side.Seller, 89, 0]
+    ];
 
     it("should throw TransactionCreationError ", function() {
         rawTransactions.map((t) => {
