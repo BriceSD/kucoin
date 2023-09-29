@@ -12,6 +12,31 @@ router.get('/', (req: Request, res: Response) => {
     res.status(200).send('');
 });
 
+/**
+ * @api {get} /delta/:pair Request delta amount for given pair
+ * @apiName GetDelta
+ * @apiGroup Delta
+ *
+ * @apiParam {string} Token pair symbols separated by a dash
+ * @apiParamExample {json} request_desc
+ * {
+     "data": {
+         "pair": "BTC-ETH"
+   }
+ }
+ *
+ * @apiSuccess {number} amount Delta amount
+ *
+ * @apiSuccessExample {json} response_desc
+ * HTTP/1.1 200 OK
+ *  {
+    "code": 200,
+     "data": {
+         "amount": 1
+   }
+ }
+ *
+ */
 router.get('/:pair', async (req: Request, res: Response) => {
     const rawTokens = req.params.pair.split('-');
     if (rawTokens.length != 2) {
