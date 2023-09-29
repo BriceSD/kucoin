@@ -1,30 +1,38 @@
 import { Delta } from "../../domain/Delta";
 import { Pair } from "../../domain/Pair";
 import { TransactionBook, TransactionBookCreationError } from "../../domain/TransactionBook";
-import { DrivingPort } from "../../domain/port/DrivingPort";
-import { HttpPort, HttpPortError } from "../../domain/port/HttpPort";
 import { CustomError } from "../../util/CustomError";
+import { DrivenPortError } from "../port/driven/DrivenPortError";
+import { TransactionPort } from "../port/driven/TransactionPort";
+import { DeltaPort } from "../port/driving/DeltaPort";
 
 /**
  * Application service implementing Driving Port
+ * Enable router to access Deltas
  */
-export class DeltaService implements DrivingPort {
+export class DeltaService implements DeltaPort {
 
-    private transactionRepository: HttpPort;
+    private transactionRepository: TransactionPort;
 
-    constructor(transactionRepository: HttpPort) {
+    constructor(transactionRepository: TransactionPort) {
         this.transactionRepository = transactionRepository;
     }
 
+/**
+ * Compute Delta for a given Pair
+ * 
+ *@param pair 
+ *
+ */
     public async compute(pair: Pair): Promise<Delta> {
         try {
             const transactions = await this.transactionRepository.fetch(pair);
-            const transactionBook = TransactionBook.from(pair, transactions);
+            const book = TransactionBook.from(pair, transactions);
 
-            return Delta.from(transactionBook);
+            return Delta.from(book);
         } catch (e) {
-            if (e instanceof HttpPortError) {
-                throw new DeltaServiceError("Something went wrong while fetching transactions for pair : " + pair, e);
+            if (e instanceof DrivenPortError) {
+                throw new DeltaServiceError("Something went wrong while fetching external data ", e);
             } 
             else if (e instanceof TransactionBookCreationError) {
                 throw new DeltaServiceError("Something went wrong while creating transactions book for pair : " + pair, e);

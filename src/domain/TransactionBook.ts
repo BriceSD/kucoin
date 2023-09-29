@@ -15,7 +15,7 @@ export class TransactionBook {
         const len = transactions.filter((t) => t.pair?.equals(pair)).length;
 
         if (len !== transactions.length) {
-            throw new TransactionBookCreationError("Transaction isn't of expected pair");
+            throw new TransactionBookCreationError("At least one transaction isn't of given pair");
         }
 
         return new TransactionBook(pair, transactions);
