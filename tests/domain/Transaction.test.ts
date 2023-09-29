@@ -22,7 +22,11 @@ describe("When building a transaction with negative time/size or size of 0", fun
 describe("When building a transaction with valid arguments", function() {
     let pair = generatePair("aaaa", "bbbb");
 
-    let rawTransactions: [Pair, Side, number, number][] = [[pair, Side.Buyer, 1, 1], [pair, Side.Seller, 1, 88], [pair, Side.Seller, 89, 1]];
+    let rawTransactions: [Pair, Side, number, number][] = [
+        [pair, Side.Buyer, 1, 1], 
+        [pair, Side.Seller, 1, 88], 
+        [pair, Side.Seller, 89, 1]
+    ];
 
     it("should build the transaction", function() {
         rawTransactions.map((t) => {

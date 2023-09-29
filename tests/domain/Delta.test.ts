@@ -12,7 +12,7 @@ describe("When computing delta from an empty book", function() {
     });
 });
 
-describe("When building a transaction book with a wrong pair", function() {
+describe("When computing delta from a book with transactions", function() {
     let a = 10;
     let b = 2;
     let pair = generatePair("aaaa", "bbbb");
@@ -23,7 +23,7 @@ describe("When building a transaction book with a wrong pair", function() {
 
     let book = TransactionBook.from(pair, transactions);
 
-    it("should return a delta of sum of transactions", function() {
+    it("should return a Delta object containing the delta of transactions", function() {
         expect(Delta.from(book).amount).toEqual(a-b+a);
     });
 });
