@@ -1,5 +1,5 @@
 Goal of the app : 
-Given a token pair (BTC-ETH != ETH-BTC), fetch the public trade history (since beginning of time ?) and compute the delta index.
+Given a token pair (BTC-ETH != ETH-BTC ??), fetch the public trade history and compute the delta index.
 
 1. Make a simple backend server
 1. Make an API endpoint that accept a token pair.
@@ -24,10 +24,15 @@ Given a token pair (BTC-ETH != ETH-BTC), fetch the public trade history (since b
     - SDK = less risky if API changes (at least if SDK is updated), only JS (no TS)
 
 ## Todo
-1. Add unit/integration tests
-1. Add tracing/log
-1. Add CI
-1. Add endpoint documentation
+[ ] Add unit/integration tests
+[ ] Add tracing/log
+[ ] Add CI
+[X] Add endpoint documentation
+[X] Add domain "library" documentation
+[ ] Unit test TransactionRepositoryAdapter, refactor it first and test weird deserialized inputs
+[X] check on unit tests name/comment (too much copy pasta, risk of mistakes)
+[X] Add install + run + tests + doc generation in the readme
+[ ] Set timeouts on external requests (really needed if only http?)
 
 ## Questions
 Who can use my API ? Everyone, no account, should we add a req limit ?
@@ -39,7 +44,9 @@ Should we store delta for a given pair ? We trade computing time for disk usage.
 * Token
 * Token pair
 * Token pair transaction
+* Token pair transaction book
 * Token pair Delta
 
 # Possible improvements 
 Process pairs in batch when app usage is low, store informations (with last transaction number), then when the user call our API we only need to process new data instead of everything since the beggining of times
+    * Not needed since the kucoin response is very small (order of magnitude of 10-100 transactions)
