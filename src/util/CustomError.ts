@@ -1,3 +1,7 @@
+/**
+ * Error kind helping to trace back the root cause of the error
+ * Allows to have a short summary of what went wrong and the course of action
+ */
 export class CustomError extends Error {
     cause: Error | undefined;
 
@@ -8,6 +12,10 @@ export class CustomError extends Error {
         Object.setPrototypeOf(this, CustomError.prototype);
     }
 
+    /**
+    * Print error message and all its root causes (if any)
+    *
+    */
     getErrorMessages() {
         let message: string[] = [];
         message.push("Error: " + this.message);

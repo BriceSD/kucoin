@@ -8,8 +8,8 @@ import { TransactionBook } from "./TransactionBook";
 *
 * This class represents a domain object containing the **delta** of transactions for a given pair.
 *
-* @member pair - Token pair 
-* @member amount - Summed amount of transactions
+* @member pair Token pair 
+* @member amount Summed amount of transactions
 *
 */
 export class Delta {
@@ -22,9 +22,9 @@ export class Delta {
     }
 
     /**
-    * Create a Delta from a {@link TransactionBook}
+    * Create a Delta from a TransactionBook
     *
-    * @param book - The TransactionBook
+    * @param book The TransactionBook
     * @returns Valid Delta object 
     *
     */

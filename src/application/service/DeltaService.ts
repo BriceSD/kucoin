@@ -18,12 +18,13 @@ export class DeltaService implements DeltaPort {
         this.transactionRepository = transactionRepository;
     }
 
-/**
- * Compute Delta for a given Pair
- * 
- *@param pair 
- *
- */
+    /**
+     * Compute Delta for a given Pair
+     * 
+     *@param pair 
+     *
+     * @returns promise containing a Delta object
+     */
     public async compute(pair: Pair): Promise<Delta> {
         try {
             const transactions = await this.transactionRepository.fetch(pair);
@@ -32,11 +33,11 @@ export class DeltaService implements DeltaPort {
             return Delta.from(book);
         } catch (e) {
             if (e instanceof DrivenPortError) {
-                throw new DeltaServiceError("Something went wrong while fetching external data ", e);
-            } 
+                throw new DeltaServiceError("Something went wrong while fetching external data for pair : " + pair, e);
+            }
             else if (e instanceof TransactionBookCreationError) {
                 throw new DeltaServiceError("Something went wrong while creating transactions book for pair : " + pair, e);
-            } 
+            }
             else {
                 throw new DeltaServiceError("Something went wrong while processing pair : " + pair);
             }

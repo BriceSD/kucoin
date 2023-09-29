@@ -2,6 +2,14 @@ import { CustomError } from "../util/CustomError";
 import { Pair } from "./Pair";
 import { Transaction } from "./Transaction";
 
+/**
+* Transaction book domain object
+*
+* This class represents a list of transaction (exchange) of the same pair
+*
+* @member pair represents the two kinds of token being exchanged
+* @member transactions[] list of transactions
+*/
 export class TransactionBook {
     public readonly pair: Pair;
     public readonly transactions: Transaction[];
@@ -11,6 +19,15 @@ export class TransactionBook {
         this.pair = pair;
     }
 
+    /**
+    * Create a TransactionBook
+    *
+    * @param pair represents the two kinds of token being exchanged
+    * @param transactions[] list of transactions
+    *
+    * @returns Valid TransactionBook
+    *
+    */
     static from(pair: Pair, transactions: Transaction[]): TransactionBook {
         const len = transactions.filter((t) => t.pair?.equals(pair)).length;
 

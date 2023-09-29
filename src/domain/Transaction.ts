@@ -1,8 +1,18 @@
 import { CustomError } from "../util/CustomError";
 import { Pair } from "./Pair";
 
-// TODO: add id ? Easy if we have only one source, hard if we have one id that works for every source
+/**
+* Transaction domain object
+*
+* This class is a domain object representing a transaction (exchange) between 2 actors of 2 kinds of token
+*
+* @member pair represents the two kinds of token being exchanged
+* @member side buyer or seller
+* @member time time of the transaction
+* @member size amount of tokens bought or sold
+*/
 export class Transaction {
+    // TODO: add id ? Easy if we have only one source, hard if we have one id that works for every source
     public readonly pair: Pair;
     public readonly side: Side;
     public readonly time: number;
@@ -15,9 +25,23 @@ export class Transaction {
         this.size = size;
     }
 
+    /**
+    * Create a Transaction
+    *
+    * @param pair represents the two kinds of token being exchanged
+    * @param side buyer or seller
+    * @param time time of the transaction
+    * @param size amount of tokens bought or sold
+    *
+    * @returns Valid Transaction
+    *
+    */
     static from(pair: Pair, side: Side, time: number, size: number): Transaction {
-        if (time === undefined || time < 0 || size === undefined || size <= 0) {
-            throw new TransactionCreationError("Arguments are not valid");
+        if (size === undefined || size <= 0) {
+            throw new TransactionCreationError("Size in not valid");
+        }
+        if (time === undefined || time < 0) {
+            throw new TransactionCreationError("Time is not valid");
         }
         return new Transaction(pair, side, time, size);
     }
