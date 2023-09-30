@@ -24,15 +24,16 @@ Given a token pair (BTC-ETH != ETH-BTC ??), fetch the public trade history and c
     - SDK = less risky if API changes (at least if SDK is updated), only JS (no TS)
 
 ## Todo
-[ ] Add unit/integration tests
-[ ] Add tracing/log
-[ ] Add CI
+[~] Add unit/integration tests
+[~] Add tracing/log
+[X] Add CI
 [X] Add endpoint documentation
 [X] Add domain "library" documentation
-[ ] Unit test TransactionRepositoryAdapter, refactor it first and test weird deserialized inputs
+[X] Unit test TransactionRepositoryAdapter, refactor it first and test weird deserialized inputs
 [X] check on unit tests name/comment (too much copy pasta, risk of mistakes)
 [X] Add install + run + tests + doc generation in the readme
 [ ] Set timeouts on external requests (really needed if only http?)
+[ ] Dependency injection of services/repositories
 
 ## Questions
 Who can use my API ? Everyone, no account, should we add a req limit ?
