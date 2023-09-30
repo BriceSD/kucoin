@@ -14,7 +14,7 @@ describe("When building a transaction with negative time/size or size of 0", fun
 
     it("should throw TransactionCreationError ", function() {
         rawTransactions.map((t) => {
-            expect(() => { Transaction.from(t[0], t[1], t[2], t[3]) }).toThrow(TransactionCreationError);
+            expect(() => { Transaction.try_from(t[0], t[1], t[2], t[3]) }).toThrow(TransactionCreationError);
         });
     });
 });
@@ -30,10 +30,10 @@ describe("When building a transaction with valid arguments", function() {
 
     it("should build the transaction", function() {
         rawTransactions.map((t) => {
-            expect(Transaction.from(t[0], t[1], t[2], t[3]).pair).toEqual(t[0]);
-            expect(Transaction.from(t[0], t[1], t[2], t[3]).side).toEqual(t[1]);
-            expect(Transaction.from(t[0], t[1], t[2], t[3]).time).toEqual(t[2]);
-            expect(Transaction.from(t[0], t[1], t[2], t[3]).size).toEqual(t[3]);
+            expect(Transaction.try_from(t[0], t[1], t[2], t[3]).pair).toEqual(t[0]);
+            expect(Transaction.try_from(t[0], t[1], t[2], t[3]).side).toEqual(t[1]);
+            expect(Transaction.try_from(t[0], t[1], t[2], t[3]).time).toEqual(t[2]);
+            expect(Transaction.try_from(t[0], t[1], t[2], t[3]).size).toEqual(t[3]);
         });
     });
 });

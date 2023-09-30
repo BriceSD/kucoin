@@ -51,9 +51,9 @@ describe("When computing delta from service", function() {
     let b = 2;
     let pair = generatePair("aaaa", "bbbb");
     let transactions: Transaction[] = [];
-    transactions.push(Transaction.from(pair, Side.Buyer, 1, a));
-    transactions.push(Transaction.from(pair, Side.Seller, 1, b));
-    transactions.push(Transaction.from(pair, Side.Buyer, 1, a));
+    transactions.push(Transaction.try_from(pair, Side.Buyer, 1, a));
+    transactions.push(Transaction.try_from(pair, Side.Seller, 1, b));
+    transactions.push(Transaction.try_from(pair, Side.Buyer, 1, a));
 
     let repository = new ValidStubTransactionRepository();
     repository.transactions = transactions;

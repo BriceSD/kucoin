@@ -28,7 +28,7 @@ export class TransactionBook {
     * @returns Valid TransactionBook
     *
     */
-    static from(pair: Pair, transactions: Transaction[]): TransactionBook {
+    static try_from(pair: Pair, transactions: Transaction[]): TransactionBook {
         const len = transactions.filter((t) => t.pair?.equals(pair)).length;
 
         if (len !== transactions.length) {

@@ -80,7 +80,7 @@ export class KucoinTransactionRepository implements TransactionPort {
                 throw new DrivenPortError("Failed to parse side");
             }
 
-            return Transaction.from(pair, side, time, size);
+            return Transaction.try_from(pair, side, time, size);
         });
 
     }

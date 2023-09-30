@@ -26,7 +26,7 @@ export class Pair {
     * @returns Valid Pair
     *
     */
-    static from(base: Token, quote: Token): Pair {
+    static try_from(base: Token, quote: Token): Pair {
         if (base.equals(quote)) {
             throw new PairCreationError("Tokens symbol must be different");
         }

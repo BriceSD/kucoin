@@ -8,7 +8,7 @@ describe("When creating a transaction book with no transaction", function() {
     let transactions: Transaction[] = [];
 
     it("should create the transaction book", function() {
-        expect(TransactionBook.from(pair, transactions)).toBeTruthy();
+        expect(TransactionBook.try_from(pair, transactions)).toBeTruthy();
     });
 });
 
@@ -20,7 +20,7 @@ describe("When creating a transaction book with same pair", function() {
     let transactions: Transaction[] = [transaction1, transaction2];
 
     it("should create the transaction book", function() {
-        expect(TransactionBook.from(pair, transactions)).toBeTruthy();
+        expect(TransactionBook.try_from(pair, transactions)).toBeTruthy();
     });
 });
 
@@ -33,7 +33,7 @@ describe("When building a transaction book with a different pair", function() {
     let transactions: Transaction[] = [transaction1, transaction2];
 
     it("should throw TransactionBookCreationError ", function() {
-        expect(() => { TransactionBook.from(differentPair, transactions) }).toThrow(TransactionBookCreationError);
+        expect(() => { TransactionBook.try_from(differentPair, transactions) }).toThrow(TransactionBookCreationError);
     });
 });
 
@@ -46,6 +46,6 @@ describe("When building a transaction book with transactions made of more than o
     let transactions: Transaction[] = [transaction1, transaction2];
 
     it("should throw TransactionBookCreationError ", function() {
-        expect(() => { TransactionBook.from(pair1, transactions) }).toThrow(TransactionBookCreationError);
+        expect(() => { TransactionBook.try_from(pair1, transactions) }).toThrow(TransactionBookCreationError);
     });
 });

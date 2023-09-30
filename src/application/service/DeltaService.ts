@@ -28,7 +28,7 @@ export class DeltaService implements DeltaPort {
     public async compute(pair: Pair): Promise<Delta> {
         try {
             const transactions = await this.transactionRepository.fetch(pair);
-            const book = TransactionBook.from(pair, transactions);
+            const book = TransactionBook.try_from(pair, transactions);
 
             return Delta.from(book);
         } catch (e) {

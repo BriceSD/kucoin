@@ -36,7 +36,7 @@ export class Transaction {
     * @returns Valid Transaction
     *
     */
-    static from(pair: Pair, side: Side, time: number, size: number): Transaction {
+    static try_from(pair: Pair, side: Side, time: number, size: number): Transaction {
         if (size === undefined || size <= 0) {
             throw new TransactionCreationError("Size in not valid");
         }

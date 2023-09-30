@@ -6,7 +6,7 @@ export function generatePair(a: string, b: string): Pair{
     let t1 = Token.parse(a);
     let t2 = Token.parse(b);
 
-    return Pair.from(t1, t2);
+    return Pair.try_from(t1, t2);
 }
 
 export function generateTransactionWithPair(pair: Pair): Transaction{
@@ -14,5 +14,5 @@ export function generateTransactionWithPair(pair: Pair): Transaction{
     let size = 1;
     let time = 1;
 
-    return Transaction.from(pair, side, time, size);
+    return Transaction.try_from(pair, side, time, size);
 }

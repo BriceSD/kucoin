@@ -48,7 +48,7 @@ router.get('/:pair', async (req: Request, res: Response) => {
         let base = Token.parse(rawTokens[0]);
         let quote = Token.parse(rawTokens[1]);
 
-        let pair = Pair.from(base, quote);
+        let pair = Pair.try_from(base, quote);
 
         let delta = await deltaService.compute(pair);
 
