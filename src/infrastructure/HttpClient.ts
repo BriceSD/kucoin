@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { DrivenPortError } from '../application/port/driven/DrivenPortError';
+import { DrivenPortError } from './port/driven/DrivenPortError';
 
 export interface IHttpClient {
     get<T>(url: string): Promise<T>;

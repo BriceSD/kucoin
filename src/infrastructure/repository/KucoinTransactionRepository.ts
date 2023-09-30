@@ -1,9 +1,9 @@
-import { DrivenPortError } from "../../application/port/driven/DrivenPortError";
-import { TransactionPort } from "../../application/port/driven/TransactionPort";
 import { Pair } from "../../domain/Pair";
 import { Side, Transaction, TransactionCreationError } from "../../domain/Transaction";
 import { TransactionBookCreationError } from "../../domain/TransactionBook";
 import { IHttpClient } from "../HttpClient";
+import { DrivenPortError } from "../port/driven/DrivenPortError";
+import { TransactionPort } from "../port/driven/TransactionPort";
 
 /**
  * Transaction repository implementing Driven Port

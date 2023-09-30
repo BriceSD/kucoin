@@ -1,9 +1,9 @@
 import { Delta } from "../../domain/Delta";
 import { Pair } from "../../domain/Pair";
 import { TransactionBook, TransactionBookCreationError } from "../../domain/TransactionBook";
+import { DrivenPortError } from "../../infrastructure/port/driven/DrivenPortError";
+import { TransactionPort } from "../../infrastructure/port/driven/TransactionPort";
 import { CustomError } from "../../util/CustomError";
-import { DrivenPortError } from "../port/driven/DrivenPortError";
-import { TransactionPort } from "../port/driven/TransactionPort";
 import { DeltaPort } from "../port/driving/DeltaPort";
 
 /**

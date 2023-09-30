@@ -1,5 +1,5 @@
-import { DrivenPortError } from "../../../src/application/port/driven/DrivenPortError";
 import { IHttpClient } from "../../../src/infrastructure/HttpClient";
+import { DrivenPortError } from "../../../src/infrastructure/port/driven/DrivenPortError";
 import { KucoinData, KucoinResponse, KucoinTransactionRepository } from "../../../src/infrastructure/repository/KucoinTransactionRepository";
 import { generatePair } from "../../utils";
 
