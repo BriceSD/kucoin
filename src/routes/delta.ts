@@ -41,7 +41,7 @@ router.get('/', (req: Request, res: Response) => {
  */
 router.get('/:pair', async (req: Request, res: Response) => {
     const rawTokens = req.params.pair.split('-');
-    if (rawTokens.length != 2) {
+    if (rawTokens.length !== 2) {
         res.status(400).send('Exactly 2 symbols are required');
     }
     try {
