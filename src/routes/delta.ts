@@ -45,8 +45,8 @@ router.get('/:pair', async (req: Request, res: Response) => {
         res.status(400).send('Exactly 2 symbols are required');
     }
     try {
-        let base = Token.parse(rawTokens[0]);
-        let quote = Token.parse(rawTokens[1]);
+        let base = Token.try_parse(rawTokens[0]);
+        let quote = Token.try_parse(rawTokens[1]);
 
         let pair = Pair.try_from(base, quote);
 

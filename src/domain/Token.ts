@@ -22,7 +22,7 @@ export class Token {
     * @returns Valid Token
     *
     */
-    static parse(token: string): Token {
+    static try_parse(token: string): Token {
     // TODO: is this UTF-8 ? Is length the right way to count characters ?
         if (token === undefined || token.length < 2 || token.length > 6 || (/[^a-zA-Z]/.test(token))) {
             throw new TokenParseError("Invalid symbol");

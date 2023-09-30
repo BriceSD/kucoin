@@ -5,7 +5,7 @@ describe("When parsing a token too short", function() {
 
     it("should throw TokenParseError ", function() {
         rawTokens.map((t) => {
-            expect(() => { Token.parse(t) }).toThrow(TokenParseError);
+            expect(() => { Token.try_parse(t) }).toThrow(TokenParseError);
         });
     });
 });
@@ -15,7 +15,7 @@ describe("When parsing a token too long", function() {
 
     it("should throw TokenParseError ", function() {
         rawTokens.map((t) => {
-            expect(() => { Token.parse(t) }).toThrow(TokenParseError);
+            expect(() => { Token.try_parse(t) }).toThrow(TokenParseError);
         });
     });
 });
@@ -25,7 +25,7 @@ describe("When parsing a token that contains invalid character", function() {
 
     it("should throw TokenParseError ", function() {
         rawTokens.map((t) => {
-            expect(() => { Token.parse(t) }).toThrow(TokenParseError);
+            expect(() => { Token.try_parse(t) }).toThrow(TokenParseError);
         });
     });
 });
@@ -35,7 +35,7 @@ describe("When parsing a token that contains numbers", function() {
 
     it("should throw TokenParseError ", function() {
         rawTokens.map((t) => {
-            expect(() => { Token.parse(t) }).toThrow(TokenParseError);
+            expect(() => { Token.try_parse(t) }).toThrow(TokenParseError);
         });
     });
 });
@@ -44,14 +44,14 @@ describe("When parsing a valid token", function() {
     let rawToken = "taS";
 
     it("should return the token in capital letters", function() {
-    let t = Token.parse(rawToken);
+    let t = Token.try_parse(rawToken);
         expect(t?.symbol).toEqual(rawToken.toUpperCase());
     });
 });
 
 describe("When comparing 2 valid token with the same symbol", function() {
-    let a = Token.parse("aeae");
-    let b = Token.parse("aeae");
+    let a = Token.try_parse("aeae");
+    let b = Token.try_parse("aeae");
 
     it("should return true", function() {
         expect(a?.equals(b)).toBe(true);
@@ -59,8 +59,8 @@ describe("When comparing 2 valid token with the same symbol", function() {
 });
 
 describe("When comparing 2 valid token with different symbol", function() {
-    let a = Token.parse("aaaa");
-    let b = Token.parse("bbbb");
+    let a = Token.try_parse("aaaa");
+    let b = Token.try_parse("bbbb");
 
     it("should return false", function() {
         expect(a?.equals(b)).toBe(false);
