@@ -56,13 +56,13 @@ router.get('/:pair', async (req: Request, res: Response) => {
         res.json(delta.amount);
     } catch (e) {
         if (e instanceof TokenParseError) {
-            console.log(e.getErrorMessages());
+            console.error(e.getErrorMessages());
             res.status(400).send(e.message);
         } else if (e instanceof PairCreationError) {
-            console.log(e.getErrorMessages());
+            console.error(e.getErrorMessages());
             res.status(400).send(e.message);
         } else if (e instanceof DeltaServiceError) {
-            console.log(e.getErrorMessages());
+            console.error(e.getErrorMessages());
             res.status(500).send(e.message);
         }
         else {
