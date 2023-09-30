@@ -52,6 +52,13 @@ export class Transaction {
 }
 
 // TODO: enums in TS are not great, find a better way to do this
+/**
+* Transaction side
+*
+* @member Buyer
+* @member Seller
+*
+*/
 export enum Side {
     Buyer,
     Seller,

@@ -6,10 +6,10 @@ import { TransactionBook } from "./TransactionBook";
 /**
 * Delta domain object
 *
-* This class represents a domain object containing the **delta** of transactions for a given pair.
+* This class represents a domain object containing the ***delta*** of transactions for a given pair.
 *
 * @member pair Token pair 
-* @member amount Summed amount of transactions
+* @member amount Summed amount of transactions size
 *
 */
 export class Delta {
