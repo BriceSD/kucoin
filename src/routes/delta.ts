@@ -2,11 +2,13 @@ import { Router, Request, Response } from 'express';
 import { Pair, PairCreationError } from '../domain/Pair';
 import { Token, TokenParseError } from '../domain/Token';
 import { DeltaService, DeltaServiceError } from '../application/service/DeltaService';
-import { TransactionRepositoryAdapter } from '../infrastructure/repository/TransactionRepositoryAdapter';
 import { DeltaPort } from '../application/port/driving/DeltaPort';
+import { KucoinTransactionRepository } from '../infrastructure/repository/KucoinTransactionRepository';
+import HttpClient from '../infrastructure/HttpClient';
 
 const router = Router();
-const deltaService: DeltaPort = new DeltaService(new TransactionRepositoryAdapter());
+// TODO: Dependency injection ?
+const deltaService: DeltaPort = new DeltaService(new KucoinTransactionRepository(new HttpClient()));
 
 router.get('/', (req: Request, res: Response) => {
     res.status(200).send('');
