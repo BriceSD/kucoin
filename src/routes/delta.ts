@@ -11,7 +11,7 @@ router.get('/', (req: Request, res: Response) => {
 });
 
 /**
- * @api {get} /delta/:pair Request delta amount for given pair
+ * @api {get} /delta/:exchange/:pair Request delta amount for given pair
  * @apiName GetDelta
  * @apiGroup Delta
  *
