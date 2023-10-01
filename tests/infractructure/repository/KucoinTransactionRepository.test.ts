@@ -45,7 +45,7 @@ describe("When fetching Transaction with invalid data", function() {
     data.push(new KucoinData("99", "1", "1", "buy", 28));
     responses.push(new KucoinResponse("80", data));
 
-    it("should throw DeltaServiceError ", async function() {
+    it("should throw DrivenPortError ", async function() {
         responses.map(async (r) => {
             client.response = r;
 
