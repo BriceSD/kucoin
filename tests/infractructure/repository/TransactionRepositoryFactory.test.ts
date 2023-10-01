@@ -11,10 +11,10 @@ describe("When creating a transaction repository from factory with invalid name"
     });
 });
 
-describe("When fetching Transaction with valid data", function() {
+describe("When creating a transaction repository with a valid name", function() {
     let exchangeNames = ["Kucoin", "KUCOIN", "kucoin", "KuCoIn"];
 
-    it("should return a valid list of trasactions ", async function() {
+    it("should return the transaction repository ", async function() {
         exchangeNames.map(async (exchange) => {
             expect(TransactionRepositoryFactory.try_from(exchange))
                 .toBeTruthy();
