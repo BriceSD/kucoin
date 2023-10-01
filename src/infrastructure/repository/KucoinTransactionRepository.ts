@@ -28,7 +28,7 @@ export class KucoinTransactionRepository implements TransactionPort {
             const url = `https://api.kucoin.com/api/v1/market/histories?symbol=${pair.base.symbol}-${pair.quote.symbol}`;
             const response = await this.http.get<KucoinResponse>(url);
 
-            return this.parse(response, pair);
+            return this.try_parse(response, pair);
         } catch (e) {
             if (e instanceof TransactionBookCreationError) {
                 throw new DrivenPortError("Failed to create a transaction book", e);
@@ -49,7 +49,7 @@ export class KucoinTransactionRepository implements TransactionPort {
      *
      * @param pair Requested pair transaction
      */
-    private parse(response: KucoinResponse, pair: Pair): Transaction[] {
+    private try_parse(response: KucoinResponse, pair: Pair): Transaction[] {
         const expectedStatus = "200000";
         const status = response.code;
         const rawTransactions = response.data;
