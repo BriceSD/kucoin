@@ -2,8 +2,8 @@ import { Router, Request, Response } from 'express';
 import { Pair, PairCreationError } from '../domain/Pair';
 import { Token, TokenParseError } from '../domain/Token';
 import { DeltaService, DeltaServiceError } from '../application/service/DeltaService';
-import { DeltaPort } from '../application/port/driving/DeltaPort';
 import { RepositoryCreationError, TransactionRepositoryFactory } from '../infrastructure/repository/TransactionRepositoryFactory';
+import { DeltaPort } from '../domain/port/driving/DeltaPort';
 
 const router = Router();
 router.get('/', (req: Request, res: Response) => {

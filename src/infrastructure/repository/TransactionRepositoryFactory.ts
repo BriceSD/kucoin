@@ -1,6 +1,6 @@
+import { TransactionPort } from "../../domain/port/driven/TransactionPort";
 import { CustomError } from "../../util/CustomError";
 import HttpClient from "../HttpClient";
-import { TransactionPort } from "../port/driven/TransactionPort";
 import { KucoinTransactionRepository } from "./KucoinTransactionRepository";
 
 /**

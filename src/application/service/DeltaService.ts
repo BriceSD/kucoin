@@ -1,10 +1,10 @@
 import { Delta } from "../../domain/Delta";
 import { Pair } from "../../domain/Pair";
 import { TransactionBook, TransactionBookCreationError } from "../../domain/TransactionBook";
-import { DrivenPortError } from "../../infrastructure/port/driven/DrivenPortError";
-import { TransactionPort } from "../../infrastructure/port/driven/TransactionPort";
+import { DrivenPortError } from "../../domain/port/driven/DrivenPortError";
+import { TransactionPort } from "../../domain/port/driven/TransactionPort";
+import { DeltaPort } from "../../domain/port/driving/DeltaPort";
 import { CustomError } from "../../util/CustomError";
-import { DeltaPort } from "../port/driving/DeltaPort";
 
 /**
  * Application service implementing Driving Port
